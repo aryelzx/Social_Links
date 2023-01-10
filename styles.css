@@ -1,0 +1,123 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url(./assets/fundo-preto-com-textura-de-papel-amora_53876-129708.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+main{
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  max-width: 30rem;
+  height: 90vh;
+
+  background-color: #025298;
+  border-radius: 1rem;
+
+  transition: 1s;
+}
+main .profileimg{
+  max-width: 30%;
+
+  padding: 2px;
+
+  border-radius: 50%;
+  border: 2px solid #b6c8db;
+}
+main h3{
+  font-weight: 300;
+  margin-top: 1rem;
+  
+  color: #b6c8db;
+}
+.links{
+  display: flex;
+  width: 70%;
+
+  flex-direction: column;
+  align-items: center;
+  
+  margin: 1rem 0;
+  gap: .7rem;
+}
+.links a{
+  width: 90%;
+  text-align: center;
+  font-weight: 500;
+
+  padding: .5rem;
+
+  color: #2C74B3;
+  background-color: #ffffff;
+
+  border: 2px solid #025298;
+  border-radius: 12px;
+  
+}
+.links a:hover{
+  transition: .8s;
+  background-color: #4a4b4b;
+  color: #ffffff;
+  border: 2px solid #000;
+}
+.social{
+  display: flex;
+
+  margin: 1rem;
+  gap: 2rem;
+
+  filter: invert(86%) sepia(83%) saturate(525%) hue-rotate(182deg) brightness(180%) contrast(80%);
+}
+.social a:hover{
+  transition: 1s;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(100%);
+}
+hr{
+  width: 100px;
+  
+  border: 1px solid #b6c8db;
+}
+/* mobile */
+@media screen and (max-width: 768px){
+  main{
+    max-width: 18rem;
+    justify-content: center;
+    margin: 0 auto;
+    background: none;
+    border: 1px solid #b6c8db;
+    
+  }
+  main .profileimg{
+    max-width: 40%;
+  }
+  main h3{
+    font-size: 1rem;
+  }
+  .links a{
+    font-size: .8rem;
+    border: 1px solid #025298;
+  }
+  .social{
+    gap: 1rem;
+  }
+  hr{
+    width: 50px;
+  }  
+}
