@@ -5,6 +5,26 @@
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
 }
+:root{
+  --text-color: #cadef3;
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --bg-url: url(./assets/Interface=Desktop\,\ Theme=Dark\ mode.jpg);
+  --surface-color-hover: rgba(0, 0, 0, 0.1);
+  --highlight-color: rgba(255,255,255,0.2);
+  --highlight-color-hover: rgba(255,255,255,0.1);
+  --switch-bg-url: url(./assets/moonstar_dark.svg)
+}
+.light{
+  --text-color: #000;
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --bg-url: url(./assets/Interface=Desktop\,\ Theme=Light\ mode.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color-hover: rgba(255, 255, 255, 0.1);
+  --highlight-color: rgba(0,0,0,0.1);
+  --highlight-color-hover: rgba(0,0,0,0.2);
+  --switch-bg-url: url(./assets/sun.svg)
+}
 body{
   display: flex;
   justify-content: center;
@@ -13,7 +33,7 @@ body{
   width: 100vw;
   height: 100vh;
 
-  background-image: url(./assets/fundo-preto-com-textura-de-papel-amora_53876-129708.jpg);
+  background-image: var(--bg-url);
   background-repeat: no-repeat;
   background-size: cover;
 
@@ -28,28 +48,68 @@ main{
   max-width: 30rem;
   height: 85%;
 
-  background-color: #025298;
-  border-radius: 1rem;
-
   transition: 1s;
 }
 main .profileimg{
-  max-width: 30%;
+  width: 122px;
 
   padding: 2px;
 
   border-radius: 50%;
-  border: 2px solid #b6c8db;
+  border: 2px solid var(--text-color);
+}
+#switch{
+  position: relative;
+
+  width: 64px;
+
+  margin: 14px auto;
+}
+#switch button{
+  width: 32px;
+  height: 32px;
+
+  cursor: pointer;
+
+  border: 0;;
+  border-radius: 50%;
+
+  background: #fff var(--switch-bg-url) no-repeat center;
+
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.light #switch button{
+  right: 0;
+  left: initial;
+}
+#switch span{
+  display: block;
+
+  width: 64px;
+  height: 24px;
+
+  background: var(--surface-color);
+
+  border: 1px solid var(--stroke-color);
+  border-radius: 9999px;
+
+  --webkit-backdrop-filter:blur(4px);
 }
 main h3{
+  font-size: 16px;
   font-weight: 300;
-  margin-top: 1rem;
   
-  color: #b6c8db;
+  color: var(--text-color);
+  
+  margin-top:8px;
 }
 .links{
   display: flex;
-  width: 70%;
+  width: 25rem;
 
   flex-direction: column;
   align-items: center;
@@ -60,67 +120,91 @@ main h3{
 .links a{
   width: 90%;
   text-align: center;
-  font-weight: 500;
+  font-weight: 400;
 
   padding: .5rem;
 
-  color: #2C74B3;
-  background-color: #ffffff;
+  color: var(--text-color);
 
-  border: 2px solid #025298;
-  border-radius: 12px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+
+  backdrop-filter: blur(4px);
+  --webkit-backdrop-filter: blur(4px);
   
+  transition: background 0.2s;
 }
-.links a:hover{
-  transition: .8s;
-  background-color: #4a4b4b;
-  color: #ffffff;
-  border: 2px solid #000;
+.links a:hover{ 
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
 }
 .social{
   display: flex;
+  justify-content: center;
 
-  margin: 1rem;
-  gap: 2rem;
+  padding: 24px 0;
 
-  filter: invert(86%) sepia(83%) saturate(525%) hue-rotate(182deg) brightness(180%) contrast(80%);
+  font-size: 24px;
+}
+.social a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  font-size: 24px;
+
+  transition: background 0.2s;
+  border-radius: 50%;
+
+  color: var(--text-color);
 }
 .social a:hover{
   transition: 1s;
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(200%) contrast(100%);
+  background: var(--highlight-color-hover);
 }
 hr{
   width: 100px;
   
-  border: 1px solid #b6c8db;
+  border: 1px solid var(--text-color);
 }
-/* mobile */
-@media screen and (max-width: 768px){
-  main{
-    max-width: 18rem;
-    height: 75%;
-
-    justify-content: center;
-    margin: 0 auto;
-
-    background: none;
-    border: 1px solid #b6c8db;
-    
+/* media queries */
+@media (max-width: 700px) {
+  :root {
+    --bg-url: url(./assets/Interface=Mobile\,\ Theme=Dark\ mode.jpg);
   }
-  main .profileimg{
-    max-width: 50%;
+
+  .light {
+    --bg-url: url(./assets/Interface=Mobile\,\ Theme=Light\ mode.jpg);
   }
-  main h3{
-    font-size: 1.5rem;
+
+  main {
+    max-width: 20rem;
   }
   .links a{
-    font-size: 1rem;
-    border: 1px solid #025298;
+    width: 80%;
   }
-  .social{
-    gap: 1rem;
+
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
   hr{
     width: 50px;
   }  
+}
 }
